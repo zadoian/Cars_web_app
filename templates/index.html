@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .car-list {
+            margin-bottom: 20px;
+        }
+        .car {
+            background-color: #1e1e1e;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #3700b3;
+        }
+        .flash {
+            background-color: #03dac6;
+            color: #121212;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Car Management</h1>
+            <a href="{{ url_for('add_car') }}" class="button">Add New Car</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="car-list">
+            {% for car in cars %}
+            <div class="car">
+                <p><strong>Name:</strong> {{ car.name }}</p>
+                <p><strong>Model:</strong> {{ car.model }}</p>
+                <p><strong>Year:</strong> {{ car.year }}</p>
+                <div class="actions">
+                    <a href="{{ url_for('delete_car', car_id=car.id) }}" class="button">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST" action="{{ url_for('search_car') }}">
+            <input type="text" name="search" placeholder="Search car by name or ID" required>
+            <button type="submit" class="button">Search</button>
+        </form>
+    </div>
+</body>
+</html>

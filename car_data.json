@@ -1,0 +1,32 @@
+[
+    {
+        "id": "60880170-b93e-4ef8-a462-3719cd40cbcf",
+        "name": "volvo",
+        "model": "xc90",
+        "year": "2020"
+    },
+    {
+        "id": "2befc23e-bc6d-41b9-9aa1-dc4188dc5904",
+        "name": "volvo",
+        "model": "v50",
+        "year": "2008"
+    },
+    {
+        "id": "659c49dd-3af9-48fe-9f08-40da39a0f98b",
+        "name": "bmw",
+        "model": "m3",
+        "year": "2024"
+    },
+    {
+        "id": "5a74da3e-31ed-408c-bb87-cf1272f70c0e",
+        "name": "bmw",
+        "model": "m5",
+        "year": "2024"
+    },
+    {
+        "id": "46f0c54a-4d92-4416-9514-d5f26635225a",
+        "name": "volvo",
+        "model": "v60",
+        "year": "2020"
+    }
+]
